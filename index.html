@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>post generator</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
+            <h1>What's going on at Family Worship Center?</h1>
+        </header>
+        <main>
+             <div class="card">
+                <form>
+                    <div>
+                        <label>Link:</label>
+                        <input type="text" name="link" placeholder="URL" id="link">
+                    </div>
+                    <div>
+                        <label >Worship with:</label>
+                        <select name="worship-leader" id="worship-leader">
+                        </select>
+                    </div>
+                    <div>
+                        <label>Song Special:</label>
+                        <select name="Song-special" id="song-special-singer">
+                        </select>
+                        <input type="text" placeholder="Song" id="song-special-song">
+                        <button class="add-song" type="button">add song</button>
+                    </div>
+                    <div>
+                        <label>Jimmy's Special</label>
+                        <input name="Jimmy-special" type="text" id="jimmy-special" placeholder="Song">
+                    </div>
+                    <div>
+                        <label for="preacher">Sermon:</label>
+                        <input type="text" list="preacher-list" id="preacher" placeholder="preacher">
+                        <dataList name="preacher" id="preacher-list">
+                        </dataList>
+                        <input type="text" id='message-title' placeholder="Message's Title">
+                    </div>
+                    <div class="button-container"><button type="submit">generate post</button></div>
+                    
+                </form>
+            </div> 
+
+            <!-- <div class="card">
+                <textarea name="" id="post" cols="30" rows="10"></textarea>
+                <div class="button-container">
+                    <button class="copy-post">copy post</button>
+                </div>
+            </div> -->
+        </main>
+        <script src="script.js"></script>
+    </body>
+</html>
