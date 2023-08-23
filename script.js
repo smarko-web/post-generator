@@ -40,7 +40,7 @@ form.addEventListener('click', (e) => {
     // console.log(songs);
 
     const target = e.target; 
-    console.log(target.nodeName, target.type);
+    // console.log(target.nodeName, target.type);
     if (target.nodeName === 'BUTTON' && target.type === 'button' && (songSpecialSong.value !== null && songSpecialSong.value !== undefined)) {
         
         var newSongForm = addSongButton.parentNode.cloneNode(true); 
@@ -67,3 +67,19 @@ form.addEventListener('submit', (e) => {
     console.log(url, worshipLeaderName, songSpecialSingerName, songSpecialSong, jimmySong, preacherName, message);
     post.innerHTML = `${url} Worship with: ${worshipLeaderName} ${songSpecialSingerName}: ${songSpecialSongName} #JimmySwaggart: ${jimmySongName} ${preacherName}: ${message} #sbn #praiseandworship #fwcbr`;
 })
+
+
+function validateUrl(inputUrl, acceptable) {
+    let validUrl = inputUrl.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g);
+
+    let accepted = acceptable.some(el => inputUrl.includes(el) );
+
+    let res = (validUrl && accepted );
+
+    if( res ) return true;
+    return false
+}
+
+console.log(
+    validateUrl( 'https://www.youtube.com/watch?v=vXgsZEVEkcc', ['facebook.com', 'youtube.com'])
+)
