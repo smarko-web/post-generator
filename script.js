@@ -10,7 +10,6 @@ const songSpecialSong = document.querySelector('#song-special-song');
 const jimmySong = document.querySelector('#jimmy-special');
 const preacher = document.querySelector('#preacher-list');
 
-
 var url, message; 
 const singerList = ['Robin Herd', 'Randy Knaps', 'Joseph Larson', 'Grace Larson Brumley', 'Jill Swaggart', 'Tara Montpetit', 'Kim Coleman', 'BJ Pons', 'FWC choir and singers', 'FWC singers'];
 const preacherList = ['Jimmy Swaggart', 'Donnie Swaggart', 'Gabriel Swaggart', 'Loren Larson', 'Mike Muzzerall', 'David Smith', 'Dale Usey', 'Dr. Don Paul Gray', 'Paris Ragan', 'Shaun Murphy', 'Jonathan Steele', 'Dr. Dave Watts',
@@ -25,9 +24,12 @@ for(var i = 0; i < singerList.length - 1; i++) {
 for(var i = 0; i < singerList.length; i++) {
     var option = document.createElement('option');
     var optionName = document.createTextNode(singerList[i]);
+    option.value = singerList[i];
     option.appendChild(optionName);
     songSpecialSinger.insertBefore(option, songSpecialSinger.lastChild);
 }
+
+// console.log(songSpecialSinger.value);
 for(var i = 0; i < preacherList.length; i++) {
     var option = document.createElement('option');
     var optionName = document.createTextNode(preacherList[i]);
@@ -37,7 +39,7 @@ for(var i = 0; i < preacherList.length; i++) {
 
 // console.log(jimmySong.parentNode)
 
-    
+const songSingerList = {};
 form.addEventListener('click', (e) => {
     // var songs = {songSpecialSinger.value : songSpecialSong.value };
     // console.log(songs);
@@ -46,7 +48,15 @@ form.addEventListener('click', (e) => {
     const event = e;
     // console.log(target.nodeName, target.type);
     if (target.nodeName === 'BUTTON' && target.type === 'button' && (songSpecialSong.value !== null && songSpecialSong.value !== undefined)) {
-    
+       
+
+        songSingerList[songSpecialSinger.value] = songSpecialSong.value;
+        console.log(songSingerList);
+        songSpecialSong.value = '';
+        // var newSongForm = addSongButton.parentNode.cloneNode(true); 
+        // addSongButton.remove();
+        //  target.remove();
+        // form.insertBefore(newSongForm, jimmySong.parentNode);
     }
     else if (target.type === 'submit') {
        event.preventDefault();
