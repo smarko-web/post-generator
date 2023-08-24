@@ -39,3 +39,6 @@ button[type="submit"], .copy-post {
     color: #fff;
     padding: .75em;
 }
+.error {
+    color: red;
+}

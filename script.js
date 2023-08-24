@@ -1,6 +1,7 @@
 const form = document.querySelector('form');
 const post = document.querySelector('#post');
 const addSongButton = document.querySelector('.add-song');
+const worshipLeaderContainer = document.querySelector('.worship-leader-form-container');
 const worshipLeader = document.querySelector('#worship-leader');
 const songSpecialSinger = document.querySelector('#song-special-singer');
 const songSpecialSong = document.querySelector('#song-special-song');
@@ -32,7 +33,7 @@ for(var i = 0; i < preacherList.length; i++) {
     preacher.insertBefore(option, preacher.lastChild);
 }
 
-console.log(jimmySong.parentNode)
+// console.log(jimmySong.parentNode)
 
     
 form.addEventListener('click', (e) => {
@@ -57,15 +58,33 @@ form.addEventListener('submit', (e) => {
     e.preventDefault();
 
     url = document.querySelector('#link').value; 
-    var worshipLeaderName = worshipLeader.value; 
-    var songSpecialSingerName = songSpecialSinger.value; 
-    var songSpecialSongName = songSpecialSong.value; 
-    var jimmySongName = jimmySong.value;
-    var preacherName = preacher.value;
-    message = document.querySelector('#message-title').value;
+ 
 
-    console.log(url, worshipLeaderName, songSpecialSingerName, songSpecialSong, jimmySong, preacherName, message);
-    post.innerHTML = `${url} Worship with: ${worshipLeaderName} ${songSpecialSingerName}: ${songSpecialSongName} #JimmySwaggart: ${jimmySongName} ${preacherName}: ${message} #sbn #praiseandworship #fwcbr`;
+    if (!url || url === '' || url === undefined || url === null) {
+        const error = document.createElement('div');
+        error.className = 'error';
+        error.innerHTML = 'Empty Field';
+        form.insertBefore(error, worshipLeaderContainer);
+    }
+    else if (!validateUrl(url, ["youtube.com", "facebook.com"])) {
+        const error = document.createElement('div');
+        error.className = 'error';
+        error.innerHTML = 'Not An Approved Site';
+        form.insertBefore(error, worshipLeaderContainer);
+    }
+    else {
+        var worshipLeaderName = worshipLeader.value; 
+        var songSpecialSingerName = songSpecialSinger.value; 
+        var songSpecialSongName = songSpecialSong.value; 
+        var jimmySongName = jimmySong.value;
+        var preacherName = preacher.value;
+        message = document.querySelector('#message-title').value;
+    
+        console.log(url, worshipLeaderName, songSpecialSingerName, songSpecialSong, jimmySong, preacherName, message);
+        post.innerHTML = `${url} Worship with: ${worshipLeaderName} ${songSpecialSingerName}: ${songSpecialSongName} #JimmySwaggart: ${jimmySongName} ${preacherName}: ${message} #sbn #praiseandworship #fwcbr`;
+        
+    }
+
 })
 
 
@@ -80,6 +99,3 @@ function validateUrl(inputUrl, acceptable) {
     return false
 }
 
-console.log(
-    validateUrl( 'https://www.youtube.com/watch?v=vXgsZEVEkcc', ['facebook.com', 'youtube.com'])
-)
