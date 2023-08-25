@@ -47,11 +47,14 @@ form.addEventListener('click', (e) => {
     const target = e.target; 
     const event = e;
     // console.log(target.nodeName, target.type);
-    if (target.nodeName === 'BUTTON' && target.type === 'button' && (songSpecialSong.value !== null && songSpecialSong.value !== undefined)) {
-       
-
+    if (target.nodeName === 'BUTTON' && target.type === 'button' && (songSpecialSong.value != '')) {
+        
+        if (songSingerList.hasOwnProperty(songSpecialSinger.value)) {
+            console.log('Singer already sang');
+            console.log(songSingerList);
+        }
         songSingerList[songSpecialSinger.value] = songSpecialSong.value;
-        console.log(songSingerList);
+        // console.log(songSingerList);
         songSpecialSong.value = '';
         // var newSongForm = addSongButton.parentNode.cloneNode(true); 
         // addSongButton.remove();
