@@ -48,18 +48,21 @@ form.addEventListener('click', (e) => {
     const event = e;
     // console.log(target.nodeName, target.type);
     if (target.nodeName === 'BUTTON' && target.type === 'button' && (songSpecialSong.value != '')) {
-        
-        if (songSingerList.hasOwnProperty(songSpecialSinger.value)) {
-            console.log('Singer already sang');
-            console.log(songSingerList);
+        const singer = songSpecialSinger.value;
+        const song = songSpecialSong.value;
+    
+        if (songSingerList.hasOwnProperty(singer)) {
+          // Singer already exists in the list, add the song to their array
+          songSingerList[singer].push(song);
+          console.log(`Added "${song}" to ${singer}'s songs`);
+        } else {
+          // Singer doesn't exist, create a new array for them
+          songSingerList[singer] = [song];
+          console.log(`Created new list for ${singer} with "${song}"`);
         }
-        songSingerList[songSpecialSinger.value] = songSpecialSong.value;
-        // console.log(songSingerList);
+    
+        console.log(songSingerList);
         songSpecialSong.value = '';
-        // var newSongForm = addSongButton.parentNode.cloneNode(true); 
-        // addSongButton.remove();
-        //  target.remove();
-        // form.insertBefore(newSongForm, jimmySong.parentNode);
     }
     else if (target.type === 'submit') {
        event.preventDefault();
