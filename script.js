@@ -1,3 +1,5 @@
+const formCard = document.querySelector('.form-card');
+const postCard = document.querySelector('.post-card');
 const form = document.querySelector('form');
 const post = document.querySelector('#post');
 const addSongButton = document.querySelector('.add-song');
@@ -41,25 +43,14 @@ form.addEventListener('click', (e) => {
     // console.log(songs);
 
     const target = e.target; 
+    const event = e;
     // console.log(target.nodeName, target.type);
     if (target.nodeName === 'BUTTON' && target.type === 'button' && (songSpecialSong.value !== null && songSpecialSong.value !== undefined)) {
-        
-        var newSongForm = addSongButton.parentNode.cloneNode(true); 
-        // addSongButton.remove();
-        //  target.remove();
-        form.insertBefore(newSongForm, jimmySong.parentNode);
+    
     }
-
-
-    // console.log(addSongButton);
-})
-
-form.addEventListener('submit', (e) => {
-    e.preventDefault();
-
-    url = document.querySelector('#link').value; 
- 
-
+    else if (target.type === 'submit') {
+       event.preventDefault();
+        url = document.querySelector('#link').value; 
     if (!url || url === '' || url === undefined || url === null) {
         const error = document.createElement('div');
         error.className = 'error';
@@ -77,17 +68,17 @@ form.addEventListener('submit', (e) => {
         var songSpecialSingerName = songSpecialSinger.value; 
         var songSpecialSongName = songSpecialSong.value; 
         var jimmySongName = jimmySong.value;
-        var preacherName = preacher.value;
+        var preacherName = document.querySelector('#preacher').value;
         message = document.querySelector('#message-title').value;
     
         console.log(url, worshipLeaderName, songSpecialSingerName, songSpecialSong, jimmySong, preacherName, message);
         post.innerHTML = `${url} Worship with: ${worshipLeaderName} ${songSpecialSingerName}: ${songSpecialSongName} #JimmySwaggart: ${jimmySongName} ${preacherName}: ${message} #sbn #praiseandworship #fwcbr`;
-        
+        toggleCards(formCard, postCard);
+    }
     }
 
-})
-
-
+}
+)
 function validateUrl(inputUrl, acceptable) {
     let validUrl = inputUrl.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g);
 
@@ -97,5 +88,10 @@ function validateUrl(inputUrl, acceptable) {
 
     if( res ) return true;
     return false
+}
+
+function toggleCards(card1, card2) {
+    card1.classList.toggle('hide');
+    card2.classList.toggle('hide');
 }
 
