@@ -87,7 +87,14 @@ form.addEventListener('click', (e) => {
         var preacherName = document.querySelector('#preacher').value;
         message = document.querySelector('#message-title').value;
     
-        console.log(url, worshipLeaderName, songSpecialSingerName, songSpecialSong, jimmySong, preacherName, message);
+        
+        // Iterate through the songSingerList to generate the desired output
+        for (const singer in songSingerList) {
+            const songs = songSingerList[singer].join(', ');
+            console.log(`${singer}: ${songs}`);
+        }
+
+
         post.innerHTML = `${url} Worship with: ${worshipLeaderName} ${songSpecialSingerName}: ${songSpecialSongName} #JimmySwaggart: ${jimmySongName} ${preacherName}: ${message} #sbn #praiseandworship #fwcbr`;
         toggleCards(formCard, postCard);
     }
