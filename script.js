@@ -29,7 +29,6 @@ for(var i = 0; i < singerList.length; i++) {
     songSpecialSinger.insertBefore(option, songSpecialSinger.lastChild);
 }
 
-// console.log(songSpecialSinger.value);
 for(var i = 0; i < preacherList.length; i++) {
     var option = document.createElement('option');
     var optionName = document.createTextNode(preacherList[i]);
@@ -37,16 +36,12 @@ for(var i = 0; i < preacherList.length; i++) {
     preacher.insertBefore(option, preacher.lastChild);
 }
 
-// console.log(jimmySong.parentNode)
-
 const songSingerList = {};
 form.addEventListener('click', (e) => {
-    // var songs = {songSpecialSinger.value : songSpecialSong.value };
-    // console.log(songs);
+   
 
     const target = e.target; 
     const event = e;
-    // console.log(target.nodeName, target.type);
     if (target.nodeName === 'BUTTON' && target.type === 'button' && (songSpecialSong.value != '')) {
         const singer = songSpecialSinger.value;
         const song = songSpecialSong.value;
@@ -54,14 +49,10 @@ form.addEventListener('click', (e) => {
         if (songSingerList.hasOwnProperty(singer)) {
           // Singer already exists in the list, add the song to their array
           songSingerList[singer].push(song);
-          console.log(`Added "${song}" to ${singer}'s songs`);
         } else {
           // Singer doesn't exist, create a new array for them
           songSingerList[singer] = [song];
-          console.log(`Created new list for ${singer} with "${song}"`);
         }
-    
-        console.log(songSingerList);
         songSpecialSong.value = '';
     }
     else if (target.type === 'submit') {
@@ -81,30 +72,18 @@ form.addEventListener('click', (e) => {
     }
     else {
         var worshipLeaderName = worshipLeader.value; 
-        var songSpecialSingerName = songSpecialSinger.value; 
-        var songSpecialSongName = songSpecialSong.value; 
         var jimmySongName = jimmySong.value;
         var preacherName = document.querySelector('#preacher').value;
         message = document.querySelector('#message-title').value;
     
-        
+        var output = '';
         // Iterate through the songSingerList to generate the desired output
         for (const singer in songSingerList) {
             const songs = songSingerList[singer].join(', ');
-            console.log(`${singer}: ${songs}`);
+            output += `${singer}: ${songs}`; 
         }
 
-
-        post.innerHTML = `${url} Worship with: ${worshipLeaderName} ${songSpecialSingerName}: ${songSpecialSongName} #JimmySwaggart: ${jimmySongName} ${preacherName}: ${message} #sbn #praiseandworship #fwcbr`;
-        
-        // Iterate through the songSingerList to generate the desired output
-        for (const singer in songSingerList) {
-            const songs = songSingerList[singer].join(', ');
-            console.log(`${singer}: ${songs}`);
-        }
-
-
-        post.innerHTML = `${url} Worship with: ${worshipLeaderName} ${songSpecialSingerName}: ${songSpecialSongName} #JimmySwaggart: ${jimmySongName} ${preacherName}: ${message} #sbn #praiseandworship #fwcbr`;
+        post.innerHTML = `${url} Worship with: ${worshipLeaderName} ${output} #JimmySwaggart: ${jimmySongName} ${preacherName}: ${message} #sbn #praiseandworship #fwcbr`;
         toggleCards(formCard, postCard);
     }
     }
