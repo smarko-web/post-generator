@@ -9,6 +9,7 @@ const songSpecialSinger = document.querySelector('#song-special-singer');
 const songSpecialSong = document.querySelector('#song-special-song');
 const jimmySong = document.querySelector('#jimmy-special');
 const preacher = document.querySelector('#preacher-list');
+const copyButton = document.querySelector('.copy-post');
 
 var url, message; 
 const singerList = ['Robin Herd', 'Randy Knaps', 'Joseph Larson', 'Grace Larson Brumley', 'Jill Swaggart', 'Tara Montpetit', 'Kim Coleman', 'BJ Pons', 'FWC choir and singers', 'FWC singers'];
@@ -94,6 +95,14 @@ form.addEventListener('click', (e) => {
 
 }
 )
+copyButton.addEventListener('click', () => {
+    post.select();
+    document.execCommand('copy');
+    copyButton.innerHTML = 'post copied';
+    copyButton.classList.add('clicked');
+    setTimeout(() => {copyButton.classList.remove('clicked')}, 250);
+})
+
 function validateUrl(inputUrl, acceptable) {
     let validUrl = inputUrl.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g);
 
