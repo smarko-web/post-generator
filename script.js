@@ -65,7 +65,7 @@ form.addEventListener('click', (e) => {
         error.innerHTML = 'Empty Field';
         form.insertBefore(error, worshipLeaderContainer);
     }
-    else if (!validateUrl(url, ["youtube.com", "facebook.com"])) {
+    else if (!validateUrl(url, ["youtube.com", "facebook.com", "fb.watch"])) {
         const error = document.createElement('div');
         error.className = 'error';
         error.innerHTML = 'Not An Approved Site';
