@@ -82,8 +82,12 @@ form.addEventListener('click', (e) => {
             const songs = songSingerList[singer].join(', ');
             output += `${singer}: ${songs}`; 
         }
-
-        post.innerHTML = `${url} Worship with: ${worshipLeaderName} ${output} #JimmySwaggart: ${jimmySongName} ${preacherName}: ${message} #sbn #praiseandworship #fwcbr`;
+      
+        if (jimmySongName !== '') {
+            post.innerHTML = `${url} Worship with: ${worshipLeaderName} ${output} #JimmySwaggart: ${jimmySongName} ${preacherName}: ${message} #sbn #praiseandworship #fwcbr`;
+        } else {
+            post.innerHTML = `${url} Worship with: ${worshipLeaderName} ${output} ${preacherName}: ${message} #sbn #praiseandworship #fwcbr`;
+        }
         toggleCards(formCard, postCard);
     }
     }
