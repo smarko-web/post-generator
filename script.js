@@ -12,11 +12,11 @@ const preacher = document.querySelector('#preacher-list');
 const copyButton = document.querySelector('.copy-post');
 
 var url, message; 
-const singerList = ['Robin Herd', 'Randy Knaps', 'Joseph Larson', 'Grace Larson Brumley', 'Jill Swaggart', 'Tara Montpetit', 'Kim Coleman', 'BJ Pons', 'FWC choir and singers', 'FWC singers'];
+const singerList = ['Robin Herd', 'Randy Knaps', 'Joseph Larson', 'Grace Larson Brumley', 'Jill Swaggart', 'Tara Montpetit', 'Kim Coleman', 'BJ Pons','Brian Haney', 'FWC choir and singers', 'FWC singers'];
 const preacherList = ['Jimmy Swaggart', 'Donnie Swaggart', 'Gabriel Swaggart', 'Loren Larson', 'Mike Muzzerall', 'David Smith', 'Dale Usey', 'Dr. Don Paul Gray', 'Paris Ragan', 'Shaun Murphy', 'Jonathan Steele', 'Dr. Dave Watts',
 'Dr. Jimmy DuPree'];
 
-for(var i = 0; i < singerList.length - 1; i++) {
+for(var i = 0; i < singerList.length - 2; i++) {
     var option = document.createElement('option');
     var optionName = document.createTextNode(singerList[i]);
     option.appendChild(optionName);
