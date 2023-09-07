@@ -11,7 +11,7 @@ const jimmySong = document.querySelector('#jimmy-special');
 const preacher = document.querySelector('#preacher-list');
 const copyButton = document.querySelector('.copy-post');
 
-var url, message; 
+var message; 
 const singerList = ['Robin Herd', 'Randy Knaps', 'Joseph Larson', 'Grace Larson Brumley', 'Jill Swaggart', 'Tara Montpetit', 'Kim Coleman', 'BJ Pons','Brian Haney', 'FWC choir and singers', 'FWC singers'];
 const preacherList = ['Jimmy Swaggart', 'Donnie Swaggart', 'Gabriel Swaggart', 'Loren Larson', 'Mike Muzzerall', 'David Smith', 'John Rosenstern', 'Josh Rosenstern', 'Dale Usey', 'Dr. Don Paul Gray', 'Paris Ragan', 'Shaun Murphy', 'Jonathan Steele', 'Dr. Dave Watts',
 'Dr. Jimmy DuPree'];
@@ -37,6 +37,12 @@ for(var i = 0; i < preacherList.length; i++) {
     preacher.insertBefore(option, preacher.lastChild);
 }
 
+const urlInput = document.querySelector('#link');
+
+document.addEventListener('DOMContentLoaded', () => {
+    navigator.clipboard.readText().then((clipText) => (urlInput.value = clipText))
+}
+)
 const songSingerList = {};
 form.addEventListener('click', (e) => {
    
@@ -58,7 +64,7 @@ form.addEventListener('click', (e) => {
     }
     else if (target.type === 'submit') {
        event.preventDefault();
-        url = document.querySelector('#link').value; 
+       var url = urlInput.value; 
     if (!url || url === '' || url === undefined || url === null) {
         const error = document.createElement('div');
         error.className = 'error';
